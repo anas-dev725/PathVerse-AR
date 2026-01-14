@@ -1,0 +1,7 @@
+{
+  "name": "PathVerse AR",
+  "description": "AR indoor navigation system using AI-powered visual recognition for IOBM.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
