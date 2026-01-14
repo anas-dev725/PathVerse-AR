@@ -2,13 +2,16 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { AIAnalysisResult } from "../types";
 
 // Initialize Gemini
-// The API key must be obtained exclusively from the environment variable process.env.API_KEY.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// We provide a fallback string to prevent the constructor from throwing if the env var is undefined during development.
+// The actual API call is guarded by the check in analyzeSurroundings.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "dummy_key_for_init" });
 
 export const analyzeSurroundings = async (base64Image: string): Promise<AIAnalysisResult> => {
-  if (!process.env.API_KEY) {
+  // 1. Check if the API Key is available.
+  // Note: We check specifically for the environment variable, not the 'ai' instance presence.
+  if (!process.env.API_KEY || process.env.API_KEY === "dummy_key_for_init") {
     // Fallback simulation if no API key is provided, so the demo still "works" visually
-    console.warn("No API Key found. Using mock data.");
+    console.warn("No valid API Key found. Using mock data for demonstration.");
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({
