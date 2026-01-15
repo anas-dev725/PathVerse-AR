@@ -6,6 +6,12 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
+  const scrollToOverview = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('system-overview');
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden bg-white dark:bg-[#050505] transition-colors duration-300">
       {/* Dynamic Background */}
@@ -22,19 +28,18 @@ const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-600 dark:bg-green-500"></span>
             </span>
-            <span className="text-xs font-bold text-green-700 dark:text-green-400 uppercase tracking-widest">Smart Campus Initiative</span>
+            <span className="text-xs font-bold text-green-700 dark:text-green-400 uppercase tracking-widest">Spatial Intelligence Initiative</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-gray-900 dark:text-white">
-            Never Get <br />
+            Stop Guessing<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 animate-gradient">
-              Lost Again.
+              Start Navigating.
             </span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed font-medium">
-            Hey there! Struggling to find Room 401? <br/>
-            PathVerse AR uses your camera to "see" the campus and draws a magical green path right to your classroom. No internet needed.
+            Finding your way shouldn't be a puzzle. PathVerse AR turns your phone into a campus sidekick that guides you straight to your classroom in the CBM and IT buildings.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -42,28 +47,32 @@ const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
               onClick={onStartDemo}
               className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white dark:text-black transition-all duration-300 bg-black dark:bg-white rounded-full hover:bg-green-600 dark:hover:bg-green-400 hover:text-white hover:shadow-[0_0_40px_rgba(16,185,129,0.4)]"
             >
-              Get Started
+              Start Navigating
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </button>
             
-            <a href="#system-overview" className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 dark:text-white transition-all duration-200 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 backdrop-blur-sm">
+            <a 
+              href="#system-overview" 
+              onClick={scrollToOverview}
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-700 dark:text-white transition-all duration-200 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 backdrop-blur-sm"
+            >
               <Play className="mr-2 h-5 w-5 fill-current" />
-              How It Works
+              Vision System
             </a>
           </div>
 
           <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200 dark:border-white/10">
             <div>
               <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">99%</div>
-              <div className="text-xs text-gray-500 font-mono uppercase">Confidence</div>
+              <div className="text-xs text-gray-500 font-mono uppercase">Recognition</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">0ms</div>
-              <div className="text-xs text-gray-500 font-mono uppercase">Lag (On-Device)</div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Low</div>
+              <div className="text-xs text-gray-500 font-mono uppercase">Latency</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">AI</div>
-              <div className="text-xs text-gray-500 font-mono uppercase">Vision Powered</div>
+              <div className="text-xs text-gray-500 font-mono uppercase">Edge Vision</div>
             </div>
           </div>
         </div>
@@ -91,7 +100,7 @@ const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
                   <div className="bg-black/60 backdrop-blur p-2 rounded-lg border border-green-500/30">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-[10px] font-mono text-green-400">VPS ACTIVE</span>
+                      <span className="text-[10px] font-mono text-green-400">VISION ACTIVE</span>
                     </div>
                   </div>
                </div>
@@ -99,11 +108,11 @@ const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
                <div className="absolute bottom-8 left-4 right-4 bg-zinc-900/90 backdrop-blur-xl p-4 rounded-2xl border border-white/10 shadow-lg transform transition-all hover:scale-105 cursor-default">
                   <div className="flex justify-between items-center">
                     <div>
-                      <p className="text-xs text-gray-400 uppercase font-bold">Destination</p>
+                      <p className="text-xs text-gray-400 uppercase font-bold">Spatial Target</p>
                       <p className="text-white font-bold text-lg">Lab 401</p>
                     </div>
                     <div className="bg-green-500 w-12 h-12 rounded-full flex items-center justify-center text-black font-bold shadow-lg shadow-green-500/30">
-                      <ArrowRight size={24} />
+                      <LocateFixed size={24} />
                     </div>
                   </div>
                </div>
@@ -117,8 +126,8 @@ const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
                 <Sparkles className="w-5 h-5 text-green-600 dark:text-green-400" />
               </div>
               <div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 font-bold">Accuracy</p>
-                <p className="text-sm font-bold text-gray-900 dark:text-white">Pin-point Precision</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-bold">Precision</p>
+                <p className="text-sm font-bold text-gray-900 dark:text-white">Spatial Aware</p>
               </div>
             </div>
           </div>
@@ -129,8 +138,8 @@ const Hero: React.FC<HeroProps> = ({ onStartDemo }) => {
                 <LocateFixed className="w-5 h-5 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 font-bold">Coverage</p>
-                <p className="text-sm font-bold text-gray-900 dark:text-white">All IOBM Buildings</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 font-bold">Context</p>
+                <p className="text-sm font-bold text-gray-900 dark:text-white">Live Mapping</p>
               </div>
             </div>
           </div>

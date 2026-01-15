@@ -1,88 +1,69 @@
 import React from 'react';
-import { Quote, TrendingUp, Users, Clock } from 'lucide-react';
+import { Quote, TrendingUp, Users, Clock, Star, Heart } from 'lucide-react';
 
 const ImpactSection: React.FC = () => {
   return (
     <section className="py-24 bg-gray-50 dark:bg-zinc-950 relative overflow-hidden transition-colors duration-300">
-      
+      {/* Decorative Blur */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-green-500/5 rounded-full blur-[150px] -mr-96 -mt-96 pointer-events-none"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Enhanced Stats Section */}
-        <div className="text-center mb-16">
-           <span className="text-green-600 dark:text-green-400 font-bold tracking-wider uppercase text-sm">Real-time Impact</span>
-           <h2 className="mt-2 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">Making Campus Life Easier</h2>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-16">
+          <div>
+            <span className="text-green-600 dark:text-green-400 font-bold tracking-wider uppercase text-sm block mb-4">Real-world Outcomes</span>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.1] mb-8">
+              Changing the way <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Students Move.</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-lg">
+              Our pilot program across the CBM, IT Building, and SSK blocks has shown significant improvements in student punctuality.
+            </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-24">
-           {[
-             { label: "Students Navigated", value: "542", suffix: "+", icon: <Users className="text-blue-500 w-6 h-6" />, color: "blue" },
-             { label: "Time Saved", value: "1,205", suffix: " Hours", icon: <Clock className="text-green-500 w-6 h-6" />, color: "green" },
-             { label: "Success Rate", value: "98.5", suffix: "%", icon: <TrendingUp className="text-purple-500 w-6 h-6" />, color: "purple" },
-             { label: "User Rating", value: "4.9", suffix: "/5", icon: <Quote className="text-orange-500 w-6 h-6" />, color: "orange" },
-           ].map((stat, i) => (
-             <div key={i} className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden">
-                <div className={`absolute top-0 right-0 w-24 h-24 bg-${stat.color}-500/10 rounded-full -mr-8 -mt-8 blur-2xl group-hover:bg-${stat.color}-500/20 transition-colors`}></div>
-                
-                <div className="flex items-center justify-between mb-4">
-                   <div className={`p-3 rounded-2xl bg-${stat.color}-50 dark:bg-${stat.color}-500/10`}>
-                     {stat.icon}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: "Active Students", value: "850", suffix: "+", icon: <Users size={20} />, color: "blue" },
+                { label: "Time Saved", value: "2.4k", suffix: "m", icon: <Clock size={20} />, color: "green" },
+                { label: "Nav Accuracy", value: "99.2", suffix: "%", icon: <TrendingUp size={20} />, color: "purple" },
+                { label: "Community Love", value: "4.9", suffix: "/5", icon: <Star size={20} />, color: "orange" },
+              ].map((stat, i) => (
+                <div key={i} className="group p-6 bg-white dark:bg-zinc-900 rounded-[2rem] border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:border-green-500/30 transition-all duration-500 cursor-default hover:-translate-y-1">
+                  <div className={`p-3 rounded-xl bg-${stat.color}-500/10 text-${stat.color}-500 w-fit mb-4 group-hover:scale-110 transition-transform`}>
+                    {stat.icon}
+                  </div>
+                  <h3 className="text-3xl font-black text-gray-900 dark:text-white group-hover:text-green-500 transition-colors">
+                    {stat.value}<span className="text-green-500 text-xl">{stat.suffix}</span>
+                  </h3>
+                  <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative group">
+             <div className="absolute -inset-4 bg-gradient-to-r from-green-500 to-emerald-500 rounded-[3rem] blur-2xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
+             <div className="relative bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-[3rem] border border-gray-100 dark:border-white/5 shadow-2xl transition-all duration-500 group-hover:scale-[1.01]">
+                <Quote className="text-green-500 w-16 h-16 opacity-10 absolute top-12 left-12 group-hover:opacity-20 transition-opacity" />
+                <div className="relative z-10">
+                   <div className="flex gap-1 mb-8">
+                     {[1,2,3,4,5].map(s => <Star key={s} size={20} className="fill-yellow-400 text-yellow-400" />)}
+                   </div>
+                   <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-tight mb-10">
+                     PathVerse is like a real campus companion. I used to get so stressed running late for labs in the IT Building, but now I just follow the arrows and it's a breeze.
+                   </p>
+                   <div className="flex items-center gap-5">
+                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-green-500/20">
+                        SA
+                      </div>
+                      <div>
+                        <p className="text-xl font-bold text-gray-900 dark:text-white">Sarah Ahmed</p>
+                        <p className="text-gray-500 font-medium text-sm">BBA Student, IOBM Senior</p>
+                      </div>
                    </div>
                 </div>
-                
-                <div className="relative">
-                   <h3 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-1 tracking-tight">
-                     {stat.value}<span className={`text-${stat.color}-500 text-2xl`}>{stat.suffix}</span>
-                   </h3>
-                   <p className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">{stat.label}</p>
-                </div>
              </div>
-           ))}
+          </div>
         </div>
 
-        {/* Testimonials */}
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white text-center mb-16">Don't just take our word for it</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              quote: "I used to get lost in the academic block every single day. PathVerse is a lifesaver, especially when I'm running late!",
-              name: "Sarah Ahmed",
-              role: "BBA Student",
-              initials: "SA",
-              color: "green"
-            },
-            {
-              quote: "The AR arrows are so intuitive. It feels like having a personal guide walking you to your class. Finally, a project that works.",
-              name: "Moiz Khan",
-              role: "CS Department",
-              initials: "MK",
-              color: "blue"
-            },
-            {
-              quote: "Honestly, I didn't think it would work this well without internet, but the hybrid caching saved me during exams.",
-              name: "Fatima Ali",
-              role: "Media Science",
-              initials: "FA",
-              color: "purple"
-            }
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white dark:bg-zinc-900 p-8 rounded-2xl border border-gray-200 dark:border-zinc-800 relative shadow-sm hover:shadow-xl hover:border-green-500/30 dark:hover:border-green-500/30 dark:hover:bg-zinc-800/80 dark:hover:shadow-[0_0_20px_rgba(34,197,94,0.1)] transition-all duration-300 hover:-translate-y-1">
-               <div className="absolute -top-4 left-8 bg-black dark:bg-zinc-800 p-2 rounded-full border border-gray-700">
-                 <Quote className="text-green-500 w-4 h-4" />
-               </div>
-               <p className="text-gray-600 dark:text-gray-300 italic mb-6 leading-relaxed text-sm">"{item.quote}"</p>
-               <div className="flex items-center gap-4 mt-auto">
-                 <div className={`w-10 h-10 rounded-full bg-${item.color}-100 dark:bg-${item.color}-500/20 flex items-center justify-center text-${item.color}-600 dark:text-${item.color}-400 font-bold text-sm`}>
-                   {item.initials}
-                 </div>
-                 <div>
-                   <p className="text-gray-900 dark:text-white font-bold text-sm">{item.name}</p>
-                   <p className="text-xs text-gray-500 uppercase font-bold">{item.role}</p>
-                 </div>
-               </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

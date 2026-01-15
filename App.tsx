@@ -19,12 +19,19 @@ function App() {
   const [userName, setUserName] = useState<string>("Student");
   const [initialAuthMode, setInitialAuthMode] = useState<'login' | 'signup'>('signup');
 
-  // Initialize Theme
+  // Initialize Theme and Persistence
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
+    }
+    
+    // Check for existing session
+    const savedUser = localStorage.getItem('pathsense_user');
+    if (savedUser) {
+      setUserName(savedUser);
+      setAppState(AppState.DASHBOARD);
     }
   }, [isDarkMode]);
 
@@ -40,17 +47,21 @@ function App() {
 
   const handleLoginSuccess = (name: string) => {
     setUserName(name);
+    localStorage.setItem('pathsense_user', name);
     setAppState(AppState.DASHBOARD);
   };
+
   const handleStartAR = () => setAppState(AppState.DEMO);
   const handleBackToDashboard = () => setAppState(AppState.DASHBOARD);
+  
   const handleLogout = () => {
+    localStorage.removeItem('pathsense_user');
     setUserName("Student");
     setAppState(AppState.LANDING);
   };
+
   const handleNavigateHome = () => setAppState(AppState.LANDING);
 
-  // Render Logic based on State
   if (appState === AppState.DEMO) {
     return <ARDemo onBack={handleBackToDashboard} />;
   }
@@ -74,7 +85,6 @@ function App() {
     );
   }
 
-  // Default: Landing Page
   return (
     <div className="min-h-screen selection:bg-green-500 selection:text-white dark:selection:text-black">
       <Navbar 
@@ -97,7 +107,6 @@ function App() {
         <CTABanner onStart={() => handleAuthNavigation('signup')} />
       </main>
       
-      {/* Footer */}
       <footer className="bg-white dark:bg-black py-12 border-t border-gray-200 dark:border-zinc-900 text-center transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-2xl font-bold mb-2 tracking-tight text-gray-900 dark:text-white">

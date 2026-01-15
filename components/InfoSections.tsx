@@ -11,7 +11,7 @@ export const ProblemSection: React.FC = () => {
             Why is navigating IOBM <br/>so <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Frustrating?</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400">
-            We've all been there. You're late for class, the internet is down, and every corridor looks exactly the same.
+            We've all been there. You're late for class, the internet is down, and every corridor in the IT Building or CBM looks exactly the same.
           </p>
         </div>
 
@@ -19,18 +19,18 @@ export const ProblemSection: React.FC = () => {
           {[
             {
               icon: <Compass className="w-8 h-8 text-red-500" />,
-              title: "The Maze Effect",
-              desc: "Blocks A, B, and C are architectural twins. Without a guide, finding a specific lab feels like solving a complex puzzle."
+              title: "Architectural Twins",
+              desc: "The CBM and SSK wings feature repetitive architectural patterns. Without a guide, finding Room 402 vs 403 feels like a guessing game."
             },
             {
               icon: <WifiOff className="w-8 h-8 text-red-500" />,
-              title: "Dead Zones",
-              desc: "Campus Wi-Fi is great, until it isn't. Traditional map apps fail the moment you step into a basement or thick-walled corridor."
+              title: "Signal Dead Zones",
+              desc: "The IT Building's thick structural concrete often blocks GPS and Wi-Fi. Traditional apps fail just when you need them most."
             },
             {
               icon: <UserCheck className="w-8 h-8 text-red-500" />,
-              title: "Social Awkwardness",
-              desc: "Nobody wants to be that fresher constantly asking seniors for directions. We give you independence."
+              title: "Academic Independence",
+              desc: "Nobody wants to spend their first semester constantly asking for directions. We empower you to navigate like a pro from Day 1."
             }
           ].map((item, index) => (
             <div key={index} className="group p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:border-red-500/30 transition-all duration-300 hover:transform hover:-translate-y-2">
@@ -59,34 +59,34 @@ export const SolutionSection: React.FC = () => {
           {/* Content */}
           <div className="lg:w-1/2">
             <div className="inline-block px-4 py-1.5 rounded-full border border-green-500/30 bg-green-100 dark:bg-green-500/10 mb-6">
-              <span className="text-xs font-bold text-green-600 dark:text-green-400 tracking-wider uppercase">Our Proposed Solution</span>
+              <span className="text-xs font-bold text-green-600 dark:text-green-400 tracking-wider uppercase">Spatial Vision Solution</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
               A Camera that <br/> 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">Knows Where You Are.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">Knows Every Corner.</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
-              We ditched the GPS (it doesn't work inside anyway). Instead, PathVerse AR uses <strong>Visual Positioning Service (VPS)</strong> concepts powered by AI.
+              We ditched GPS. Instead, PathVerse AR identifies your exact position in the SSK or IT Building by recognizing unique architectural landmarks.
             </p>
 
             <div className="space-y-6">
               {[
                 {
                   icon: <Eye className="w-6 h-6" />,
-                  title: "Computer Vision Analysis",
-                  desc: "Your smartphone camera scans the environment. Our AI recognizes landmarks like staircases, department signs, and specific corridor layouts.",
+                  title: "Multimodal Analysis",
+                  desc: "Our AI recognizes specific signs, lab numbers, and hall geometry within the CBM Building, matching your camera feed to a pre-mapped spatial grid.",
                   color: "green"
                 },
                 {
                   icon: <Layers className="w-6 h-6" />,
-                  title: "Augmented Reality Overlay",
-                  desc: "Once we know where you are, we draw 3D arrows directly onto your screen, anchored to the real world floor.",
+                  title: "Persistent AR Markers",
+                  desc: "Directions are anchored to the floor plane. Walk through corridors as arrows stay perfectly locked in place, regardless of signal strength.",
                   color: "blue"
                 },
                 {
                   icon: <Smartphone className="w-6 h-6" />,
-                  title: "Edge Computing",
-                  desc: "All of this happens right on your phone. We've optimized the AI models to run smoothly on standard devices.",
+                  title: "Low Latency Edge Processing",
+                  desc: "No data centers required. The logic happens on your device, ensuring a 60FPS fluid navigation experience through IOBM.",
                   color: "purple"
                 }
               ].map((feature, idx) => (
@@ -107,9 +107,8 @@ export const SolutionSection: React.FC = () => {
 
           {/* Visual Graphic */}
           <div className="lg:w-1/2 mt-16 lg:mt-0 sticky top-24">
-            <div className="relative rounded-3xl border border-gray-200 dark:border-zinc-800 bg-gray-100 dark:bg-zinc-900 p-2 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
+            <div className="relative rounded-3xl border border-gray-200 dark:border-zinc-800 bg-gray-100 dark:bg-zinc-900 p-2 shadow-2xl transition-transform duration-500">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-black group">
-                {/* Background Image - Updated to Real Campus Building */}
                 <img 
                   src="https://images.unsplash.com/photo-1525921429624-479b6a26d84d?q=80&w=1000&auto=format&fit=crop" 
                   alt="University Campus Building" 
@@ -117,40 +116,35 @@ export const SolutionSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
                 
-                {/* AI Overlay UI */}
                 <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                   {/* Top HUD */}
                    <div className="flex justify-between items-start">
                       <div className="bg-black/70 backdrop-blur-md px-3 py-1 rounded text-green-400 text-xs font-mono border border-green-500/30 shadow-lg">
-                        VPS: ACTIVE • FLOOR 2
+                        VPS: LOCKED • CBM FLOOR 1
                       </div>
                       <Cpu className="text-green-400 animate-pulse" />
                    </div>
 
-                   {/* Center Reticle */}
                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-green-500/30 rounded-lg group-hover:scale-105 transition-transform shadow-[0_0_50px_rgba(16,185,129,0.2)]">
                       <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-green-500"></div>
                       <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-green-500"></div>
                       <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-green-500"></div>
                       <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-green-500"></div>
                       
-                      {/* Analysis Text */}
                       <div className="absolute -bottom-10 left-0 text-[10px] font-mono text-green-400 bg-black/80 backdrop-blur px-3 py-2 rounded border-l-2 border-green-500">
-                         &gt; DETECTING_FLOOR_PLAN... <br/>
-                         &gt; MATCH_FOUND: ACADEMIC_BLOCK_B <br/>
-                         &gt; CONFIDENCE: 98.4%
+                         &gt; DETECTING_LANDMARKS... <br/>
+                         &gt; MATCH_FOUND: IT_BUILDING_LABS <br/>
+                         &gt; PRECISION: 1.2CM
                       </div>
                    </div>
 
-                   {/* Bottom Panel */}
                    <div className="bg-black/80 backdrop-blur-xl p-4 rounded-xl border-t border-green-500/50 shadow-2xl">
                       <div className="flex items-center gap-4">
                         <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/20">
                           <Compass className="text-black" size={20} />
                         </div>
                         <div>
-                          <p className="text-green-400 text-xs font-bold uppercase tracking-wider">Navigation Active</p>
-                          <p className="text-white font-bold">Turn Right for Library</p>
+                          <p className="text-green-400 text-xs font-bold uppercase tracking-wider">Vision Path</p>
+                          <p className="text-white font-bold">Turn Right for SSK Cafe</p>
                         </div>
                       </div>
                    </div>
