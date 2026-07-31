@@ -73,20 +73,20 @@ export const SolutionSection: React.FC = () => {
               {[
                 {
                   icon: <Eye className="w-6 h-6" />,
-                  title: "Multimodal Analysis",
-                  desc: "Our AI recognizes specific signs, lab numbers, and hall geometry within the CBM Building, matching your camera feed to a pre-mapped spatial grid.",
+                  title: "Visual OCR & Landmark Matching",
+                  desc: "Powered by Google ML Kit OCR, our vision engine scans room signboards in real time, matching recognized text to an offline SQLite spatial graph.",
                   color: "green"
                 },
                 {
                   icon: <Layers className="w-6 h-6" />,
                   title: "Persistent AR Markers",
-                  desc: "Directions are anchored to the floor plane. Walk through corridors as arrows stay perfectly locked in place, regardless of signal strength.",
+                  desc: "Directions lock directly to the ground plane. 3D chevrons stay aligned through corridors and staircases without cellular signal.",
                   color: "blue"
                 },
                 {
                   icon: <Smartphone className="w-6 h-6" />,
-                  title: "Low Latency Edge Processing",
-                  desc: "No data centers required. The logic happens on your device, ensuring a 60FPS fluid navigation experience through IOBM.",
+                  title: "Low-Latency Edge Processing",
+                  desc: "Zero cloud dependency. All pathfinding and OCR logic executes on-device, delivering a fluid 60 FPS navigation experience through IoBM.",
                   color: "purple"
                 }
               ].map((feature, idx) => (

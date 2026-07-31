@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Camera, Cpu, Smartphone, Scan, Zap, ArrowRight, Video, Layers, Sparkles } from 'lucide-react';
+import { MapPin, Scan, Navigation, ArrowRight, Video, Sparkles, Layers, Search } from 'lucide-react';
 
 const SystemOverview: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Optional: Auto-rotate through steps if user hasn't interacted
+  // Auto-rotate through steps if user hasn't interacted
   useEffect(() => {
     let interval: number;
     if (isAutoPlaying) {
@@ -24,35 +24,32 @@ const SystemOverview: React.FC = () => {
   const steps = [
     {
       id: 0,
-      title: "1. Capture",
-      icon: <Camera className="w-6 h-6" />,
-      desc: "The app accesses your smartphone camera to get a live feed.",
-      detail: "We capture high-resolution frames of the corridor surroundings, identifying the general environment of the campus.",
-      visualIcon: <Video className="w-12 h-12 text-white" />,
+      title: "1. Select",
+      icon: <MapPin className="w-6 h-6" />,
+      desc: "Pick your destination room or lab from the IoBM spatial graph.",
+      detail: "Pick your destination room or lab from the IoBM spatial graph to compute the optimal A* path across campus nodes.",
+      visualIcon: <Search className="w-12 h-12 text-white" />,
       color: "blue",
-      // Student holding phone capturing campus surroundings
       image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop" 
     },
     {
       id: 1,
-      title: "2. Analyze",
-      icon: <Cpu className="w-6 h-6" />,
-      desc: "Our Gemini-powered Vision model processes the frame instantly.",
-      detail: "The AI analyzes the surroundings to find key details and architectural landmarks, matching them against our campus database.",
+      title: "2. Scan",
+      icon: <Scan className="w-6 h-6" />,
+      desc: "Scan a nearby signboard for instant, offline location alignment via OCR.",
+      detail: "Scan a nearby signboard for instant, offline location alignment via Google ML Kit OCR on-device vision.",
       visualIcon: <Scan className="w-12 h-12 text-white animate-pulse" />,
       color: "purple",
-      // Analysis/Wireframe overlay looking for details
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" 
     },
     {
       id: 2,
-      title: "3. Visualize",
-      icon: <Smartphone className="w-6 h-6" />,
-      desc: "PathVerse superimposes 3D navigation arrows directly onto the floor.",
-      detail: "Visualizing the navigation path with generated green arrows and distance meters to guide you to your destination.",
+      title: "3. Navigate",
+      icon: <Navigation className="w-6 h-6" />,
+      desc: "Follow ground-anchored 3D AR chevrons and turn-by-turn voice prompts.",
+      detail: "Follow ground-anchored 3D AR chevrons and spoken turn-by-turn voice guidance directly to your destination.",
       visualIcon: <Layers className="w-12 h-12 text-white" />,
       color: "green",
-      // Futuristic AR overlay with arrows and meters
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop" 
     }
   ];

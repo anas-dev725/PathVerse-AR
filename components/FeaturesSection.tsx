@@ -22,8 +22,8 @@ const features = [
   },
   {
     icon: <Mic className="w-6 h-6" />,
-    title: "Voice Commands",
-    description: "Just say 'Navigate to SSK Auditorium' to initialize the pathfinding system instantly.",
+    title: "Voice Guidance",
+    description: "Hands-free turn-by-turn audio prompts ('Go straight 20m', 'Turn Right') to guide users seamlessly without needing to look constantly at the screen.",
     gradient: "from-orange-500/20 to-yellow-500/20"
   },
   {
@@ -34,8 +34,8 @@ const features = [
   },
   {
     icon: <Cpu className="w-6 h-6" />,
-    title: "Gemini Vision",
-    description: "Harnessing Gemini 3 Flash to recognize architectural landmarks with unmatched speed and accuracy.",
+    title: "Google ML Kit Vision",
+    description: "Harnessing Google ML Kit OCR to recognize room signboards and architectural landmarks with instant on-device speed and 100% offline accuracy.",
     gradient: "from-red-500/20 to-orange-500/20"
   }
 ];
@@ -50,7 +50,7 @@ const FeaturesSection: React.FC = () => {
           <div className="max-w-2xl">
             <span className="text-green-600 dark:text-green-400 font-bold tracking-widest uppercase text-sm block mb-2">Core Technology</span>
             <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl leading-tight">
-              A New Era of <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Spatial Intelligence</span>
+              Navigating Beyond <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">GPS Boundaries</span>
             </h2>
           </div>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-sm">

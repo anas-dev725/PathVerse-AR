@@ -7,7 +7,8 @@ const TeamSection: React.FC = () => {
       name: "Muhammad Anas",
       role: "Lead Developer",
       specialty: "AI & AR Engineering",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "/assets/Muhammad Anas VP .jpg",
+      fallbackImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       links: {
         github: "https://github.com/anas-dev725",
         linkedin: "https://www.linkedin.com/in/muhammad-anas804/",
@@ -18,7 +19,8 @@ const TeamSection: React.FC = () => {
       name: "Muhammad Abrar",
       role: "UI/UX Designer",
       specialty: "Visual Strategy & Interaction",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "/assets/abrar.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       links: {
         github: "#",
         linkedin: "https://www.linkedin.com/in/muhammad-abrar-18253727a/",
@@ -29,7 +31,8 @@ const TeamSection: React.FC = () => {
       name: "Muheb Khawer",
       role: "Backend Engineer",
       specialty: "Backend & Logic",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "/assets/muheb.jpeg",
+      fallbackImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       links: {
         github: "#",
         linkedin: "https://www.linkedin.com/in/syed-muheb-khawer-3ba725264/",
@@ -53,9 +56,15 @@ const TeamSection: React.FC = () => {
                 <img 
                   src={member.image} 
                   alt={member.name} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" 
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== member.fallbackImage) {
+                      target.src = member.fallbackImage;
+                    }
+                  }}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
                 
                 <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-300 translate-y-2 group-hover:translate-y-0">
                   <h3 className="text-2xl font-bold text-white">{member.name}</h3>

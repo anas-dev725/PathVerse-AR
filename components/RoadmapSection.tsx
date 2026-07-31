@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Flag, Star, Globe, Smartphone, ChevronRight } from 'lucide-react';
+import { Flag, Star, Globe, Smartphone, ChevronRight, CheckCircle2, CircleDot, Clock, Sparkles } from 'lucide-react';
 
 const RoadmapSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,36 +24,61 @@ const RoadmapSection: React.FC = () => {
 
   const roadmap = [
     {
-      quarter: "Phase 1 (Current)",
-      title: "Prototype & Core AI",
-      items: ["Basic Corridor Recognition", "CBM 401 & Lab Navigation", "Offline Database Setup"],
-      icon: <Flag className="w-5 h-5" />,
-      active: true,
-      color: "green"
+      quarter: "Phase 1",
+      title: "Core Engine & AR Prototype",
+      items: [
+        "3D Chevron AR Pathway Rendering (ViroReact)",
+        "Offline A* Pathfinding Engine",
+        "SQLite Spatial Graph Architecture"
+      ],
+      icon: <CheckCircle2 className="w-5 h-5 text-emerald-500" />,
+      active: false,
+      completed: true,
+      status: "Completed",
+      color: "emerald"
     },
     {
       quarter: "Phase 2",
-      title: "Campus-Wide Beta",
-      items: ["Mapping CBM, IT Building & SSK completely", "Voice Navigation Support", "Student Feedback Loop"],
-      icon: <Smartphone className="w-5 h-5" />,
+      title: "Campus Mapping & Smart Guidance",
+      items: [
+        "IT Building Corridor & Lab Node Network",
+        "Spoken Turn-by-Turn Voice Guidance (Expo Speech)",
+        "On-Device OCR Signboard Re-Localization (Google ML Kit)"
+      ],
+      icon: <CheckCircle2 className="w-5 h-5 text-emerald-500" />,
       active: false,
-      color: "blue"
+      completed: true,
+      status: "Completed",
+      color: "emerald"
     },
     {
       quarter: "Phase 3",
-      title: "Advanced Features",
-      items: ["Find My Friend (Real-time sharing)", "Event Navigation (Auditorium)", "Accessibility Routes (Ramps/Lifts)"],
-      icon: <Star className="w-5 h-5" />,
-      active: false,
-      color: "purple"
+      title: "Advanced Navigation & Admin Suite",
+      items: [
+        "Multi-Floor Staircase Navigation & Inclined Pathways",
+        "Dynamic Position & Heading Drift Correction",
+        "Admin Developer Dashboard & Session-Based User Registry",
+        "Offline Map Data Caching & Privacy Engine"
+      ],
+      icon: <Sparkles className="w-5 h-5 text-white" />,
+      active: true,
+      completed: false,
+      status: "Currently Active",
+      color: "green"
     },
     {
       quarter: "Phase 4",
-      title: "Expansion",
-      items: ["iOS Version", "Multi-Campus Support", "API for other Universities"],
+      title: "Future Expansion",
+      items: [
+        "iOS App Release (ARKit Integration)",
+        "Multi-Campus Infrastructure (CBM, SSK, & External Universities)",
+        "Enterprise Spatial Mapping API"
+      ],
       icon: <Globe className="w-5 h-5" />,
       active: false,
-      color: "emerald"
+      completed: false,
+      status: "Future Milestone",
+      color: "blue"
     }
   ];
 
@@ -69,12 +94,12 @@ const RoadmapSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div className="max-w-2xl">
-            <span className="text-green-600 dark:text-green-400 font-bold tracking-wider uppercase text-sm block mb-2">Future Scope</span>
+            <span className="text-green-600 dark:text-green-400 font-bold tracking-wider uppercase text-sm block mb-2">Development Roadmap</span>
             <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl leading-tight">
-              Visualizing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Next Frontier</span>
+              Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Phases & Evolution</span>
             </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400 text-lg">
-              We are just getting started. Our vision extends beyond just finding a classroom. Watch how our system evolves from a single prototype to a global spatial intelligence platform.
+              Tracking our progression from core AR prototype to campus-wide deployment and enterprise spatial mapping capabilities.
             </p>
           </div>
         </div>
@@ -138,31 +163,49 @@ const RoadmapSection: React.FC = () => {
 
                 <div className={`p-8 rounded-[2.5rem] border h-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${
                   phase.active 
-                    ? 'border-green-500 bg-green-50/50 dark:bg-green-500/5 shadow-[0_0_40px_rgba(34,197,94,0.15)]' 
+                    ? 'border-green-500 bg-green-50/70 dark:bg-green-500/10 ring-2 ring-green-500/30 shadow-[0_0_50px_rgba(34,197,94,0.25)]' 
+                    : phase.completed
+                    ? 'border-emerald-500/30 bg-emerald-50/20 dark:bg-emerald-950/10'
                     : 'border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50'
                 } backdrop-blur-sm relative overflow-hidden`}>
                   
+                  {/* Active Highlight Badge */}
+                  {phase.active && (
+                    <div className="absolute top-0 right-0 bg-green-500 text-black font-extrabold text-[10px] tracking-widest uppercase py-1 px-4 rounded-bl-2xl shadow-lg flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-black animate-ping"></span>
+                      Active Phase
+                    </div>
+                  )}
+
                   {/* Phase Marker & Icon */}
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-8 mt-1">
                     <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                       phase.active 
-                        ? 'bg-green-500 text-white shadow-lg shadow-green-500/40 scale-110' 
+                        ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/40 scale-110' 
+                        : phase.completed
+                        ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/30'
                         : 'bg-gray-100 dark:bg-zinc-800 text-gray-500 group-hover:bg-green-500/10 group-hover:text-green-500'
                     }`}>
                       {phase.icon}
                     </div>
                     <div className={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border ${
                       phase.active 
-                        ? 'border-green-500/50 text-green-600 dark:text-green-400' 
+                        ? 'border-green-500/50 text-green-600 dark:text-green-400 bg-green-500/10' 
+                        : phase.completed
+                        ? 'border-emerald-500/40 text-emerald-600 dark:text-emerald-400 bg-emerald-500/5'
                         : 'border-gray-300 dark:border-zinc-700 text-gray-400'
                     }`}>
-                      Stage {idx + 1}
+                      Phase {idx + 1}
                     </div>
                   </div>
 
                   <div className="flex-1">
                     <div className={`text-xs font-bold mb-1 uppercase tracking-wider ${
-                      phase.active ? 'text-green-600 dark:text-green-400' : 'text-gray-400'
+                      phase.active 
+                        ? 'text-green-600 dark:text-green-400' 
+                        : phase.completed
+                        ? 'text-emerald-600 dark:text-emerald-400'
+                        : 'text-gray-400'
                     }`}>
                       {phase.quarter}
                     </div>
@@ -173,10 +216,22 @@ const RoadmapSection: React.FC = () => {
                     <ul className="space-y-4">
                       {phase.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-3 group/item">
-                          <div className={`mt-1.5 w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                            phase.active ? 'bg-green-500' : 'bg-gray-400 dark:bg-zinc-600'
-                          } group-hover/item:scale-150 group-hover/item:bg-green-500 shadow-glow`}></div>
-                          <span className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed group-hover/item:text-gray-900 dark:group-hover/item:text-white transition-colors">
+                          <div className="mt-0.5 shrink-0">
+                            {phase.completed ? (
+                              <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5" />
+                            ) : phase.active ? (
+                              <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5" />
+                            ) : (
+                              <CircleDot className="w-4 h-4 text-gray-400 dark:text-zinc-600 mt-0.5" />
+                            )}
+                          </div>
+                          <span className={`text-sm leading-relaxed transition-colors ${
+                            phase.completed
+                              ? 'text-gray-700 dark:text-gray-300'
+                              : phase.active
+                              ? 'text-gray-900 dark:text-gray-100 font-medium'
+                              : 'text-gray-500 dark:text-gray-400'
+                          }`}>
                             {item}
                           </span>
                         </li>
@@ -187,9 +242,21 @@ const RoadmapSection: React.FC = () => {
                   {/* Status Indicator */}
                   <div className="mt-8 pt-6 border-t border-gray-100 dark:border-zinc-800">
                     <div className="flex items-center gap-2">
-                       <div className={`w-2 h-2 rounded-full ${phase.active ? 'bg-green-500 animate-pulse' : 'bg-gray-300 dark:bg-zinc-700'}`}></div>
-                       <span className={`text-[10px] font-bold uppercase tracking-widest ${phase.active ? 'text-green-600 dark:text-green-400' : 'text-gray-500'}`}>
-                         {phase.active ? 'Currently Active' : 'Future Milestone'}
+                       <div className={`w-2.5 h-2.5 rounded-full ${
+                         phase.active 
+                           ? 'bg-green-500 animate-pulse ring-4 ring-green-500/20' 
+                           : phase.completed
+                           ? 'bg-emerald-500'
+                           : 'bg-gray-300 dark:bg-zinc-700'
+                       }`}></div>
+                       <span className={`text-[10px] font-bold uppercase tracking-widest ${
+                         phase.active 
+                           ? 'text-green-600 dark:text-green-400 font-extrabold' 
+                           : phase.completed
+                           ? 'text-emerald-600 dark:text-emerald-400'
+                           : 'text-gray-500'
+                       }`}>
+                         {phase.status}
                        </span>
                     </div>
                   </div>
